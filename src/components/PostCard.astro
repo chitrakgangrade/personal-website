@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Tag from "./Tag.astro";
 import { formatDate } from "../utils/formatDate";
+import { withBase } from "../utils/url";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -12,7 +13,7 @@ const { title, date, description, tags } = post.data;
 ---
 
 <article class="group py-6 first:pt-0">
-  <a href={`/blog/${post.id}`} class="block">
+  <a href={withBase(`/blog/${post.id}`)} class="block">
     <div class="flex items-baseline justify-between gap-4">
       <h2 class="font-serif text-xl text-neutral-900 transition-colors group-hover:text-accent dark:text-neutral-100 dark:group-hover:text-accent-dark">
         {title}

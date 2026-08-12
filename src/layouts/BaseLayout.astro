@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { withBase } from "../utils/url";
 import "../styles/global.css";
 
 interface Props {
@@ -18,7 +19,7 @@ const SITE_NAME = "Your Name";
 const pageTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL("/og-image.png", Astro.site);
+const ogImageURL = new URL(withBase("/og-image.png"), Astro.site);
 ---
 
 <!doctype html>
@@ -26,9 +27,9 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href="/rss.xml" />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+    <link rel="sitemap" href={withBase("/sitemap-index.xml")} />
+    <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href={withBase("/rss.xml")} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Fonts. TODO(you): if you change the pairing in src/styles/global.css,

@@ -1,9 +1,11 @@
 ---
+import { withBase } from "../utils/url";
+
 // TODO(you): swap in your real links, or delete the ones you don't want.
 const links = [
   { href: "mailto:you@example.com", label: "Email" },
   { href: "https://github.com/", label: "GitHub" },
-  { href: "/rss.xml", label: "RSS" },
+  { href: withBase("/rss.xml"), label: "RSS" },
 ];
 
 const year = new Date().getFullYear();

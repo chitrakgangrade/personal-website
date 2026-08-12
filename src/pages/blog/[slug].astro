@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Tag from "../../components/Tag.astro";
 import { formatDate } from "../../utils/formatDate";
+import { withBase } from "../../utils/url";
 
 export async function getStaticPaths() {
   // Draft posts get no page generated for them at all -- not just hidden
@@ -45,7 +46,7 @@ const { Content } = await render(post);
     </div>
 
     <footer class="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-      <a href="/blog" class="text-sm text-accent hover:underline dark:text-accent-dark">&larr; Back to all posts</a>
+      <a href={withBase("/blog")} class="text-sm text-accent hover:underline dark:text-accent-dark">&larr; Back to all posts</a>
     </footer>
   </article>
 </BaseLayout>

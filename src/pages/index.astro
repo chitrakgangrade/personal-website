@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
+import { withBase } from "../utils/url";
 
 // TODO(you): this whole file is placeholder copy -- rewrite the bio,
 // "currently" line, interests, and about blurb to be about you.
@@ -62,7 +63,7 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
           <h2 class="text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
             Recent writing
           </h2>
-          <a href="/blog" class="text-sm text-accent hover:underline dark:text-accent-dark">
+          <a href={withBase("/blog")} class="text-sm text-accent hover:underline dark:text-accent-dark">
             View all
           </a>
         </div>
