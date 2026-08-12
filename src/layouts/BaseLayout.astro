@@ -1,0 +1,78 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  // Set to true on individual blog posts so canonical/OG "type" reflects
+  // that this is an article, not a general page.
+  isArticle?: boolean;
+}
+
+const { title, description, isArticle = false } = Astro.props;
+
+// TODO(you): pick a real site name -- shown in the browser tab as "Post — SITE_NAME"
+const SITE_NAME = "Your Name";
+const pageTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL("/og-image.png", Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href="/rss.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts. TODO(you): if you change the pairing in src/styles/global.css,
+         update this <link> to match -- Google Fonts is the easy default, but
+         feel free to self-host instead. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content={isArticle ? "article" : "website"} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <!-- TODO(you): public/og-image.png is a flat placeholder -- swap it for a
+         real 1200x630 image before sharing links anywhere. -->
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Applies the saved/preferred theme before first paint, so there's no
+         flash of the wrong theme on load. Kept tiny and inline on purpose. -->
+    <script is:inline>
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (stored === "dark" || (!stored && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body class="bg-white text-neutral-800 antialiased dark:bg-neutral-950 dark:text-neutral-200">
+    <Nav />
+    <main class="mx-auto min-h-[60vh] max-w-2xl px-6 sm:px-0">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

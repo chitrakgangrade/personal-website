@@ -1,0 +1,25 @@
+---
+// TODO(you): swap in your real links, or delete the ones you don't want.
+const links = [
+  { href: "mailto:you@example.com", label: "Email" },
+  { href: "https://github.com/", label: "GitHub" },
+  { href: "/rss.xml", label: "RSS" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mx-auto max-w-2xl px-6 py-12 sm:px-0">
+  <div class="flex flex-col gap-4 border-t border-neutral-200 pt-8 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between dark:border-neutral-800 dark:text-neutral-400">
+    <p>&copy; {year} Your Name.</p>
+    <nav class="flex gap-5">
+      {
+        links.map((link) => (
+          <a href={link.href} class="transition-colors hover:text-neutral-900 dark:hover:text-neutral-100">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Tag from "../../components/Tag.astro";
+import { formatDate } from "../../utils/formatDate";
+
+export async function getStaticPaths() {
+  // Draft posts get no page generated for them at all -- not just hidden
+  // from the index -- so there's no unlinked-but-live URL for one. Flip a
+  // post's `draft: false` when it's ready and it'll appear here too.
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, date, description, tags } = post.data;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={title} description={description} isArticle>
+  <article class="pt-8 pb-16 sm:pt-16">
+    <header class="mb-10">
+      <time datetime={date.toISOString()} class="text-sm text-neutral-400 dark:text-neutral-500">
+        {formatDate(date)}
+      </time>
+      <h1 class="mt-2 font-serif text-3xl font-medium text-neutral-900 sm:text-4xl dark:text-neutral-100">
+        {title}
+      </h1>
+      {
+        tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <Tag tag={tag} />
+            ))}
+          </div>
+        )
+      }
+    </header>
+
+    <div class="prose prose-neutral dark:prose-invert max-w-none">
+      <Content />
+    </div>
+
+    <footer class="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800">
+      <a href="/blog" class="text-sm text-accent hover:underline dark:text-accent-dark">&larr; Back to all posts</a>
+    </footer>
+  </article>
+</BaseLayout>

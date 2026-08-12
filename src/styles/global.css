@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+  Manual (class-based) dark mode instead of Tailwind v4's default
+  prefers-color-scheme-only behavior. `dark:` utilities now respond to a
+  `.dark` class on <html>, which ThemeToggle.astro toggles + persists to
+  localStorage. The inline script in BaseLayout.astro sets this class
+  before first paint so there's no flash of the wrong theme.
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  ---- Design tokens ----
+  This is the one place to touch to reskin the whole site: swap the font
+  stacks or the accent color here and it propagates everywhere via the
+  `font-serif`, `font-sans`, `text-accent`, `bg-accent`, etc. utilities.
+*/
+@theme {
+  /* TODO(you): swap these for whatever font pairing you actually want.
+     Fraunces (serif, expressive) + Inter (sans, quiet) is a placeholder
+     pairing meant to feel like a writing site, not a portfolio. Loaded via
+     Google Fonts in BaseLayout.astro -- update both places together. */
+  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* TODO(you): pick your own accent color. This warm rust is a placeholder
+     -- used for links, tags, and small accents, not large surfaces. */
+  --color-accent: #b5502e;
+  --color-accent-dark: #e2926f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+/* Typography-plugin overrides so prose content picks up the same fonts/accent
+   as the rest of the site instead of the plugin's own defaults. */
+@layer components {
+  .prose {
+    --tw-prose-headings: var(--color-neutral-900);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-neutral-900);
+    --tw-prose-invert-headings: var(--color-neutral-100);
+    --tw-prose-invert-links: var(--color-accent-dark);
+    --tw-prose-invert-bold: var(--color-neutral-100);
+  }
+
+  .prose :where(h1, h2, h3, h4) {
+    font-family: var(--font-serif);
+  }
+}
