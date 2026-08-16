@@ -3,7 +3,7 @@ title: "Notes on writing in public"
 date: 2026-02-03
 description: "A short placeholder post to test how a second entry looks on the blog index, sorted against the first."
 tags: ["writing", "meta"]
-draft: false
+draft: true
 ---
 
 Placeholder post #2. Mostly here to check that the blog index sorts correctly (newest first) and that the typography still holds up with a bit more content -- a second paragraph, a [link](https://example.com), and some `inline code`.

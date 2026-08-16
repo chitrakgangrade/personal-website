@@ -15,23 +15,24 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "Project Placeholder One",
-    description: "A one-line description of what this project is and why it exists.",
+    name: "WhatsApp Signal Extraction",
+    description:
+      "An AI framework that turns unstructured group-chat investment chatter into structured, trackable signals -- classification, conviction scoring, and pattern recognition over noisy real-world text.",
     status: "active",
-    tags: ["ai", "experiment"],
-    url: "https://github.com/",
+    tags: ["ai", "investing"],
   },
   {
-    name: "Project Placeholder Two",
-    description: "Another short, honest description -- what it does, not a sales pitch.",
-    status: "idea",
-    tags: ["strategy", "writing"],
+    name: "Portfolio Rules Engine",
+    description:
+      "A systematic sell/hold rules engine for equity positions -- staged exits, milestone profit-taking, and index-dip logic, built as a personal HTML/JS tool.",
+    status: "active",
+    tags: ["investing", "tooling"],
   },
   {
-    name: "Project Placeholder Three",
-    description: "Something older that isn't actively maintained anymore, kept for the record.",
-    status: "archived",
-    tags: ["side-project"],
-    url: "https://github.com/",
+    name: "Fitness Dashboard",
+    description: "A daily-synced personal fitness dashboard pulling from Garmin, generated and deployed automatically.",
+    status: "active",
+    tags: ["personal", "automation"],
+    url: "https://chitrakgangrade.github.io/fitness-dashboard/",
   },
 ];

@@ -13,12 +13,15 @@ const { title, date, description, tags } = post.data;
 ---
 
 <article class="group py-6 first:pt-0">
-  <a href={withBase(`/blog/${post.id}`)} class="block">
+  <a
+    href={withBase(`/blog/${post.id}`)}
+    class="block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:focus-visible:outline-accent-dark"
+  >
     <div class="flex items-baseline justify-between gap-4">
       <h2 class="font-serif text-xl text-neutral-900 transition-colors group-hover:text-accent dark:text-neutral-100 dark:group-hover:text-accent-dark">
         {title}
       </h2>
-      <time datetime={date.toISOString()} class="shrink-0 text-sm text-neutral-400 dark:text-neutral-500">
+      <time datetime={date.toISOString()} class="shrink-0 font-sans text-sm text-neutral-400 dark:text-neutral-500">
         {formatDate(date)}
       </time>
     </div>

@@ -21,10 +21,10 @@ const { title, date, description, tags } = post.data;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={title} description={description} isArticle>
+<BaseLayout title={title} description={description} isArticle publishDate={date}>
   <article class="pt-8 pb-16 sm:pt-16">
     <header class="mb-10">
-      <time datetime={date.toISOString()} class="text-sm text-neutral-400 dark:text-neutral-500">
+      <time datetime={date.toISOString()} class="font-sans text-sm text-neutral-400 dark:text-neutral-500">
         {formatDate(date)}
       </time>
       <h1 class="mt-2 font-serif text-3xl font-medium text-neutral-900 sm:text-4xl dark:text-neutral-100">
@@ -41,12 +41,12 @@ const { Content } = await render(post);
       }
     </header>
 
-    <div class="prose prose-neutral dark:prose-invert max-w-none">
+    <div class="prose prose-neutral mx-auto max-w-[70ch] dark:prose-invert">
       <Content />
     </div>
 
     <footer class="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-      <a href={withBase("/blog")} class="text-sm text-accent hover:underline dark:text-accent-dark">&larr; Back to all posts</a>
+      <a href={withBase("/blog")} class="link-underline font-sans text-sm text-accent dark:text-accent-dark">&larr; Back to all posts</a>
     </footer>
   </article>
 </BaseLayout>

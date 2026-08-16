@@ -3,7 +3,7 @@ title: "Hello, world"
 date: 2026-01-15
 description: "The obligatory first post -- why this site exists and what I plan to use it for."
 tags: ["meta"]
-draft: false
+draft: true
 ---
 
 This is the first post on this site. Every personal site needs one of these, mostly so the RSS feed and the blog index have something in them while I figure out what I actually want to write about.

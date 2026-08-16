@@ -12,22 +12,19 @@
 
 /*
   ---- Design tokens ----
-  This is the one place to touch to reskin the whole site: swap the font
-  stacks or the accent color here and it propagates everywhere via the
-  `font-serif`, `font-sans`, `text-accent`, `bg-accent`, etc. utilities.
+  Two-voice type system: serif for anything you're meant to *read* (body
+  copy, blog posts, project descriptions), sans for UI chrome you're meant
+  to *scan* (nav, tags, dates, status labels). `font-serif`/`font-sans`
+  utilities and the `text-accent`/`bg-accent` family propagate from here.
 */
 @theme {
-  /* TODO(you): swap these for whatever font pairing you actually want.
-     Fraunces (serif, expressive) + Inter (sans, quiet) is a placeholder
-     pairing meant to feel like a writing site, not a portfolio. Loaded via
-     Google Fonts in BaseLayout.astro -- update both places together. */
-  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-serif: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* TODO(you): pick your own accent color. This warm rust is a placeholder
-     -- used for links, tags, and small accents, not large surfaces. */
-  --color-accent: #b5502e;
-  --color-accent-dark: #e2926f;
+  /* Warm terracotta, used sparingly for links/accents, never large surfaces.
+     6.9:1 contrast on the light background, 8.75:1 on the dark one. */
+  --color-accent: #9a3412;
+  --color-accent-dark: #fb923c;
 }
 
 @layer base {
@@ -36,7 +33,19 @@
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-serif);
+  }
+
+  /* Only animate the theme switch itself, not the initial load -- the
+     blocking inline script in BaseLayout.astro sets .dark before first
+     paint, so there's nothing to transition on that first render. */
+  body,
+  header,
+  footer {
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
   }
 }
 
@@ -44,15 +53,52 @@
    as the rest of the site instead of the plugin's own defaults. */
 @layer components {
   .prose {
+    --tw-prose-body: var(--color-neutral-700);
     --tw-prose-headings: var(--color-neutral-900);
     --tw-prose-links: var(--color-accent);
     --tw-prose-bold: var(--color-neutral-900);
+    --tw-prose-quotes: var(--color-neutral-600);
+    --tw-prose-invert-body: var(--color-neutral-300);
     --tw-prose-invert-headings: var(--color-neutral-100);
     --tw-prose-invert-links: var(--color-accent-dark);
     --tw-prose-invert-bold: var(--color-neutral-100);
+    --tw-prose-invert-quotes: var(--color-neutral-400);
   }
 
   .prose :where(h1, h2, h3, h4) {
     font-family: var(--font-serif);
+  }
+
+  .prose :where(code, pre) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  /* Wide tables (financial data, comparisons) shouldn't force the whole page
+     to scroll horizontally on mobile -- scroll just the table instead. */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .prose a {
+    text-decoration: none;
+  }
+
+  /* Animated-underline link, used for prose links and a few standalone
+     "next/back" links -- an intentional, restrained micro-interaction
+     instead of a static text-decoration. */
+  .link-underline,
+  .prose a {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.25s ease;
+  }
+
+  .link-underline:hover,
+  .prose a:hover {
+    background-size: 100% 1px;
   }
 }

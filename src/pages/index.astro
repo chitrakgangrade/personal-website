@@ -4,10 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
 import { withBase } from "../utils/url";
 
-// TODO(you): this whole file is placeholder copy -- rewrite the bio,
-// "currently" line, interests, and about blurb to be about you.
-
-const interests = ["writing", "ai/ml", "distributed systems", "strategy games", "coffee", "long walks"];
+const interests = ["product strategy", "alpine hiking", "investing", "ai experiments", "japanese history", "writing"];
 
 const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -15,29 +12,31 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
 ---
 
 <BaseLayout
-  title="Your Name"
-  description="Personal site -- writing, projects, and whatever I'm currently into."
+  title="Chitrak Gangrade"
+  description="Product manager at Booking.com. Writing on product, investing, and AI experiments."
 >
   <section class="pt-8 sm:pt-16">
     <h1 class="font-serif text-3xl font-medium text-neutral-900 sm:text-4xl dark:text-neutral-100">
-      Hi, I'm Your Name.
+      Hi, I'm Chitrak Gangrade.
     </h1>
-    <p class="mt-4 max-w-xl text-lg text-neutral-600 dark:text-neutral-400">
-      A one-line, curt bio goes here -- what you do, in plain language, no titles.
+    <p class="mt-4 max-w-[65ch] text-lg text-neutral-600 dark:text-neutral-400">
+      Product manager working on tax and compliance systems that quietly handle bureaucratic complexity in
+      the background.
     </p>
-    <p class="mt-2 text-neutral-500 dark:text-neutral-500">
-      <span class="text-accent dark:text-accent-dark">Currently:</span> replace this with what you're actually up to right now.
+    <p class="mt-2 font-sans text-sm text-neutral-500 dark:text-neutral-500">
+      <span class="text-accent dark:text-accent-dark">Currently:</span> Product Manager at Booking.com (tax/compliance),
+      based in Amsterdam.
     </p>
   </section>
 
   <section class="mt-14">
-    <h2 class="text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+    <h2 class="font-sans text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
       What I'm into
     </h2>
     <ul class="mt-4 flex flex-wrap gap-2">
       {
         interests.map((interest) => (
-          <li class="rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
+          <li class="rounded-full border border-neutral-200 px-3 py-1 font-sans text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
             {interest}
           </li>
         ))
@@ -46,13 +45,15 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
   </section>
 
   <section class="mt-14">
-    <h2 class="text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+    <h2 class="font-sans text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
       About
     </h2>
-    <p class="mt-4 max-w-xl text-neutral-600 dark:text-neutral-400">
-      A short paragraph, not a resume. A couple of sentences on background, how you got here, and what you
-      care about. Save the exhaustive version for a CV/LinkedIn -- this is just enough context for someone
-      landing here for the first time.
+    <p class="mt-4 max-w-[65ch] text-neutral-600 dark:text-neutral-400">
+      Product manager with a background spanning Flipkart (led Flipkart Lite, one of the first large-scale
+      commercial Progressive Web Apps), Stripe, and now Booking.com, working on tax and compliance products.
+      Believes in "invisible complexity" — systems that handle bureaucratic overhead so users never have to
+      think about it. Outside of work: hut-to-hut alpine hiking (Hochkönig/Dachstein region), a long-running
+      interest in Japanese history, and systematic equities investing.
     </p>
   </section>
 
@@ -60,10 +61,10 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
     recentPosts.length > 0 && (
       <section class="mt-14 mb-16">
         <div class="flex items-baseline justify-between">
-          <h2 class="text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+          <h2 class="font-sans text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
             Recent writing
           </h2>
-          <a href={withBase("/blog")} class="text-sm text-accent hover:underline dark:text-accent-dark">
+          <a href={withBase("/blog")} class="link-underline font-sans text-sm text-accent dark:text-accent-dark">
             View all
           </a>
         </div>

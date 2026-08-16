@@ -1,6 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Placeholder favicon: a plain circle in the accent color. Swap for a
-       real mark/monogram whenever you have one -- keep it as an SVG so it
-       stays crisp at any size. -->
-  <circle cx="16" cy="16" r="16" fill="#b5502e" />
+  <circle cx="16" cy="16" r="16" fill="#9a3412" />
+  <text
+    x="16"
+    y="21"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="13"
+    fill="#fafafa"
+  >CG</text>
 </svg>

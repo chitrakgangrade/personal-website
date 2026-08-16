@@ -10,7 +10,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 );
 ---
 
-<BaseLayout title="Blog" description="Writing on whatever I'm currently thinking about.">
+<BaseLayout title="Blog" description="Writing on product, investing, and AI experiments.">
   <h1 class="pt-8 font-serif text-3xl font-medium text-neutral-900 sm:pt-16 dark:text-neutral-100">Blog</h1>
 
   {

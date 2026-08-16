@@ -9,10 +9,12 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    // TODO(you): update title/description to match the site
-    title: "Your Name",
-    description: "Writing on whatever I'm currently thinking about.",
-    site: context.site!,
+    title: "Chitrak Gangrade",
+    description: "Product manager at Booking.com. Writing on product, investing, and AI experiments.",
+    // @astrojs/rss emits `site` as-is for the channel <link> -- it doesn't
+    // know about astro.config.mjs's `base`, so join them here or the feed's
+    // top-level link points at the domain root instead of /personal-website.
+    site: new URL(withBase("/"), context.site!),
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,

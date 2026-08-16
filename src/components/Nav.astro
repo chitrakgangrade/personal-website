@@ -2,8 +2,7 @@
 import ThemeToggle from "./ThemeToggle.astro";
 import { withBase } from "../utils/url";
 
-// TODO(you): swap in your actual name/handle
-const SITE_NAME = "Your Name";
+const SITE_NAME = "Chitrak Gangrade";
 
 const links = [
   { href: "/blog", label: "Blog" },
@@ -13,15 +12,15 @@ const links = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="mx-auto flex max-w-2xl items-center justify-between px-6 py-8 sm:px-0">
+<header class="mx-auto flex max-w-2xl items-center justify-between px-4 py-8 sm:px-0">
   <a
     href={withBase("/")}
-    class="font-serif text-lg font-medium text-neutral-900 dark:text-neutral-100"
+    class="rounded-sm font-serif text-base font-medium text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-lg dark:text-neutral-100 dark:focus-visible:outline-accent-dark"
   >
     {SITE_NAME}
   </a>
 
-  <nav class="flex items-center gap-6">
+  <nav class="flex items-center gap-4 sm:gap-6">
     {
       links.map((link) => {
         const href = withBase(link.href);
@@ -30,7 +29,7 @@ const currentPath = Astro.url.pathname;
           <a
             href={href}
             class:list={[
-              "text-sm transition-colors",
+              "rounded-sm font-sans text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:focus-visible:outline-accent-dark",
               isActive
                 ? "text-neutral-900 dark:text-neutral-100"
                 : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100",
