@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
 <header class="mx-auto flex max-w-2xl items-center justify-between px-4 py-8 sm:px-0">
   <a
     href={withBase("/")}
-    class="rounded-sm font-serif text-base font-medium text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-lg dark:text-neutral-100 dark:focus-visible:outline-accent-dark"
+    class="rounded-sm font-serif text-base font-medium text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-lg dark:text-stone-100 dark:focus-visible:outline-accent-dark"
   >
     {SITE_NAME}
   </a>
@@ -31,8 +31,8 @@ const currentPath = Astro.url.pathname;
             class:list={[
               "rounded-sm font-sans text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent dark:focus-visible:outline-accent-dark",
               isActive
-                ? "text-neutral-900 dark:text-neutral-100"
-                : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100",
+                ? "text-stone-900 dark:text-stone-100"
+                : "text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100",
             ]}
           >
             {link.label}

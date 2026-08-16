@@ -11,13 +11,13 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 ---
 
 <BaseLayout title="Blog" description="Writing on product, investing, and AI experiments.">
-  <h1 class="pt-8 font-serif text-3xl font-medium text-neutral-900 sm:pt-16 dark:text-neutral-100">Blog</h1>
+  <h1 class="pt-8 font-serif text-3xl font-medium text-stone-900 sm:pt-16 dark:text-stone-100">Blog</h1>
 
   {
     posts.length === 0 ? (
-      <p class="mt-8 text-neutral-500 dark:text-neutral-400">Nothing published yet -- check back soon.</p>
+      <p class="mt-8 text-stone-500 dark:text-stone-400">Nothing published yet -- check back soon.</p>
     ) : (
-      <div class="mt-8 mb-16 divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="mt-8 mb-16 divide-y divide-stone-200 dark:divide-stone-800">
         {posts.map((post) => (
           <PostCard post={post} />
         ))}

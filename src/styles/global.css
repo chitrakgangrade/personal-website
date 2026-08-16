@@ -53,16 +53,16 @@
    as the rest of the site instead of the plugin's own defaults. */
 @layer components {
   .prose {
-    --tw-prose-body: var(--color-neutral-700);
-    --tw-prose-headings: var(--color-neutral-900);
+    --tw-prose-body: var(--color-stone-700);
+    --tw-prose-headings: var(--color-stone-900);
     --tw-prose-links: var(--color-accent);
-    --tw-prose-bold: var(--color-neutral-900);
-    --tw-prose-quotes: var(--color-neutral-600);
-    --tw-prose-invert-body: var(--color-neutral-300);
-    --tw-prose-invert-headings: var(--color-neutral-100);
+    --tw-prose-bold: var(--color-stone-900);
+    --tw-prose-quotes: var(--color-stone-600);
+    --tw-prose-invert-body: var(--color-stone-300);
+    --tw-prose-invert-headings: var(--color-stone-100);
     --tw-prose-invert-links: var(--color-accent-dark);
-    --tw-prose-invert-bold: var(--color-neutral-100);
-    --tw-prose-invert-quotes: var(--color-neutral-400);
+    --tw-prose-invert-bold: var(--color-stone-100);
+    --tw-prose-invert-quotes: var(--color-stone-400);
   }
 
   .prose :where(h1, h2, h3, h4) {

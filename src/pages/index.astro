@@ -4,7 +4,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
 import { withBase } from "../utils/url";
 
-const interests = ["product strategy", "alpine hiking", "investing", "ai experiments", "japanese history", "writing"];
+const interests = [
+  "product strategy",
+  "systems design",
+  "investing",
+  "alpine hiking",
+  "japanese history",
+  "automation",
+  "writing",
+];
 
 const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -16,27 +24,28 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
   description="Product manager at Booking.com. Writing on product, investing, and AI experiments."
 >
   <section class="pt-8 sm:pt-16">
-    <h1 class="font-serif text-3xl font-medium text-neutral-900 sm:text-4xl dark:text-neutral-100">
+    <h1 class="font-serif text-3xl font-medium text-stone-900 sm:text-4xl dark:text-stone-100">
       Hi, I'm Chitrak Gangrade.
     </h1>
-    <p class="mt-4 max-w-[65ch] text-lg text-neutral-600 dark:text-neutral-400">
-      Product manager working on tax and compliance systems that quietly handle bureaucratic complexity in
-      the background.
+    <p class="mt-4 max-w-[65ch] text-lg text-stone-600 dark:text-stone-400">
+      A product manager who keeps ending up on tax and compliance -- currently at Booking.com, previously
+      Stripe Tax. I like systems that quietly handle bureaucracy so nobody has to think about it.
     </p>
-    <p class="mt-2 font-sans text-sm text-neutral-500 dark:text-neutral-500">
-      <span class="text-accent dark:text-accent-dark">Currently:</span> Product Manager at Booking.com (tax/compliance),
-      based in Amsterdam.
+    <p class="mt-2 font-sans text-sm text-stone-500 dark:text-stone-500">
+      <span class="text-accent dark:text-accent-dark">Currently:</span> based in Amsterdam, training for a
+      high-altitude trek in Nepal by walking uphill a lot, and slowly turning my own life into a stack of
+      small automations.
     </p>
   </section>
 
   <section class="mt-14">
-    <h2 class="font-sans text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+    <h2 class="font-sans text-sm font-medium tracking-wide text-stone-400 uppercase dark:text-stone-500">
       What I'm into
     </h2>
     <ul class="mt-4 flex flex-wrap gap-2">
       {
         interests.map((interest) => (
-          <li class="rounded-full border border-neutral-200 px-3 py-1 font-sans text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
+          <li class="rounded-full border border-stone-200 px-3 py-1 font-sans text-sm text-stone-600 dark:border-stone-800 dark:text-stone-400">
             {interest}
           </li>
         ))
@@ -45,15 +54,18 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
   </section>
 
   <section class="mt-14">
-    <h2 class="font-sans text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+    <h2 class="font-sans text-sm font-medium tracking-wide text-stone-400 uppercase dark:text-stone-500">
       About
     </h2>
-    <p class="mt-4 max-w-[65ch] text-neutral-600 dark:text-neutral-400">
-      Product manager with a background spanning Flipkart (led Flipkart Lite, one of the first large-scale
-      commercial Progressive Web Apps), Stripe, and now Booking.com, working on tax and compliance products.
-      Believes in "invisible complexity" — systems that handle bureaucratic overhead so users never have to
-      think about it. Outside of work: hut-to-hut alpine hiking (Hochkönig/Dachstein region), a long-running
-      interest in Japanese history, and systematic equities investing.
+    <p class="mt-4 max-w-[65ch] text-stone-600 dark:text-stone-400">
+      I'm a product manager with a background spanning Flipkart (where I led Flipkart Lite, one of the
+      first large-scale commercial Progressive Web Apps), Stripe Tax, and now Booking.com, working on tax
+      and compliance -- the parts of running a business nobody wants to deal with. I believe in "invisible
+      complexity": systems that handle that overhead so nobody has to think about it. Outside of work:
+      hut-to-hut alpine hiking around Hochkönig and Dachstein, a long-running interest in Japanese history,
+      and systematic equities investing. The
+      <a href={withBase("/projects")} class="link-underline text-accent dark:text-accent-dark">projects page</a>
+      is where that same instinct -- automate the boring parts -- shows up outside of work, too.
     </p>
   </section>
 
@@ -61,14 +73,14 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
     recentPosts.length > 0 && (
       <section class="mt-14 mb-16">
         <div class="flex items-baseline justify-between">
-          <h2 class="font-sans text-sm font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+          <h2 class="font-sans text-sm font-medium tracking-wide text-stone-400 uppercase dark:text-stone-500">
             Recent writing
           </h2>
           <a href={withBase("/blog")} class="link-underline font-sans text-sm text-accent dark:text-accent-dark">
             View all
           </a>
         </div>
-        <div class="mt-2 divide-y divide-neutral-200 dark:divide-neutral-800">
+        <div class="mt-2 divide-y divide-stone-200 dark:divide-stone-800">
           {recentPosts.map((post) => (
             <PostCard post={post} />
           ))}
