@@ -11,7 +11,10 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 ---
 
 <BaseLayout title="Blog" description="Writing on product, investing, and AI experiments.">
-  <h1 class="pt-8 font-serif text-3xl font-medium text-stone-900 sm:pt-16 dark:text-stone-100">Blog</h1>
+  <div class="flex gap-4 pt-8 sm:pt-16">
+    <span aria-hidden="true" class="mt-2.5 h-8 w-1.5 shrink-0 bg-accent dark:bg-accent-dark" />
+    <h1 class="font-serif text-4xl font-bold text-stone-900 sm:text-5xl dark:text-stone-100">Blog</h1>
+  </div>
 
   {
     posts.length === 0 ? (

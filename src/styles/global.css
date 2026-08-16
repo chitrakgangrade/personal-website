@@ -21,10 +21,11 @@
   --font-serif: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* Warm terracotta, used sparingly for links/accents, never large surfaces.
-     6.9:1 contrast on the light background, 8.75:1 on the dark one. */
-  --color-accent: #9a3412;
-  --color-accent-dark: #fb923c;
+  /* Vermillion ink -- the color of the hanko stamp mark, and the one loud
+     accent in an otherwise black/white/stone palette. Used for links,
+     the seal mark, and small accents, never large surfaces. */
+  --color-accent: #c1272d;
+  --color-accent-dark: #ff6b52;
 }
 
 @layer base {

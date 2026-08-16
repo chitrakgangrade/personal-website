@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
+import Hanko from "../components/Hanko.astro";
 import { withBase } from "../utils/url";
 
 const interests = [
@@ -24,63 +25,61 @@ const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
   description="Product manager at Booking.com. Writing on product, investing, and AI experiments."
 >
   <section class="pt-8 sm:pt-16">
-    <h1 class="font-serif text-3xl font-medium text-stone-900 sm:text-4xl dark:text-stone-100">
+    <Hanko class="h-8 w-8 text-accent dark:text-accent-dark" />
+    <h1 class="mt-4 font-serif text-4xl leading-[1.05] font-bold text-stone-900 sm:text-5xl dark:text-stone-100">
       Hi, I'm Chitrak Gangrade.
     </h1>
-    <p class="mt-4 max-w-[65ch] text-lg text-stone-600 dark:text-stone-400">
+    <p class="mt-5 max-w-[60ch] text-xl leading-snug text-stone-800 dark:text-stone-200">
       A product manager who keeps ending up on tax and compliance -- currently at Booking.com, previously
       Stripe Tax. I like systems that quietly handle bureaucracy so nobody has to think about it.
     </p>
-    <p class="mt-2 font-sans text-sm text-stone-500 dark:text-stone-500">
-      <span class="text-accent dark:text-accent-dark">Currently:</span> based in Amsterdam, training for a
-      high-altitude trek in Nepal by walking uphill a lot, and slowly turning my own life into a stack of
-      small automations.
+    <p class="mt-5 max-w-[60ch] border border-accent/25 bg-accent/[0.06] px-4 py-2.5 font-sans text-sm text-stone-700 dark:border-accent-dark/25 dark:bg-accent-dark/[0.08] dark:text-stone-300">
+      <span class="font-bold tracking-wide text-accent uppercase dark:text-accent-dark">Currently</span>
+      -- based in Amsterdam, training for a high-altitude trek in Nepal by walking uphill a lot, and slowly
+      turning my own life into a stack of small automations.
     </p>
   </section>
 
-  <section class="mt-14">
-    <h2 class="font-sans text-sm font-medium tracking-wide text-stone-400 uppercase dark:text-stone-500">
+  <section class="mt-16">
+    <h2 class="font-sans text-xs font-bold tracking-[0.15em] text-stone-400 uppercase dark:text-stone-500">
       What I'm into
     </h2>
-    <ul class="mt-4 flex flex-wrap gap-2">
-      {
-        interests.map((interest) => (
-          <li class="rounded-full border border-stone-200 px-3 py-1 font-sans text-sm text-stone-600 dark:border-stone-800 dark:text-stone-400">
-            {interest}
-          </li>
-        ))
-      }
+    <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-sans text-sm font-bold tracking-wide text-stone-700 uppercase dark:text-stone-300">
+      {interests.map((interest) => <li>{interest}</li>)}
     </ul>
   </section>
 
-  <section class="mt-14">
-    <h2 class="font-sans text-sm font-medium tracking-wide text-stone-400 uppercase dark:text-stone-500">
+  <section class="mt-16">
+    <h2 class="font-sans text-xs font-bold tracking-[0.15em] text-stone-400 uppercase dark:text-stone-500">
       About
     </h2>
-    <p class="mt-4 max-w-[65ch] text-stone-600 dark:text-stone-400">
+    <p class="mt-4 max-w-[65ch] text-stone-700 dark:text-stone-300">
       I'm a product manager with a background spanning Flipkart (where I led Flipkart Lite, one of the
       first large-scale commercial Progressive Web Apps), Stripe Tax, and now Booking.com, working on tax
       and compliance -- the parts of running a business nobody wants to deal with. I believe in "invisible
       complexity": systems that handle that overhead so nobody has to think about it. Outside of work:
       hut-to-hut alpine hiking around Hochkönig and Dachstein, a long-running interest in Japanese history,
       and systematic equities investing. The
-      <a href={withBase("/projects")} class="link-underline text-accent dark:text-accent-dark">projects page</a>
+      <a href={withBase("/projects")} class="link-underline font-semibold text-accent dark:text-accent-dark">projects page</a>
       is where that same instinct -- automate the boring parts -- shows up outside of work, too.
     </p>
   </section>
 
   {
     recentPosts.length > 0 && (
-      <section class="mt-14 mb-16">
+      <section class="mt-16 mb-16">
         <div class="flex items-baseline justify-between">
-          <h2 class="font-sans text-sm font-medium tracking-wide text-stone-400 uppercase dark:text-stone-500">
+          <h2 class="font-sans text-xs font-bold tracking-[0.15em] text-stone-400 uppercase dark:text-stone-500">
             Recent writing
           </h2>
-          <a href={withBase("/blog")} class="link-underline font-sans text-sm text-accent dark:text-accent-dark">
+          <a
+            href={withBase("/blog")}
+            class="link-underline font-sans text-xs font-bold tracking-wide text-accent uppercase dark:text-accent-dark"
+          >
             View all
           </a>
         </div>
-        <div class="mt-2 divide-y divide-stone-200 dark:divide-stone-800">
+        <div class="mt-3 divide-y divide-stone-200 dark:divide-stone-800">
           {recentPosts.map((post) => (
             <PostCard post={post} />
           ))}
