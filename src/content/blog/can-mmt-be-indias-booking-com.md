@@ -1,6 +1,6 @@
 ---
 title: "Can MMT Be India's Booking.com?"
-date: 2026-08-16
+date: 2024-10-02
 description: "An investment thesis on MakeMyTrip from October 2024 -- reopened eighteen months later against what actually happened, including the parts I got wrong."
 tags: ["investing"]
 draft: false
