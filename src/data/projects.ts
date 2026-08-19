@@ -66,4 +66,32 @@ export const projects: Project[] = [
     tags: ["astro", "tailwind", "meta"],
     links: [{ label: "Source", url: "https://github.com/chitrakgangrade/personal-website" }],
   },
+  {
+    name: "WhatsApp Signal Extraction",
+    tagline:
+      "An AI framework that turns unstructured group-chat investment chatter into structured, trackable signals -- classification, conviction scoring, urgency tiering, and multi-message pattern recognition over noisy real-world text.",
+    description:
+      "Turns the scattered investment tips and chatter in a group chat into structured, trackable signals, so nothing worth acting on gets lost in scrollback.",
+    mechanism: [
+      "Parses informal chat exports into five standardized outputs -- an active signal register, completed trades, a conviction-ranked list, mention-frequency tracking, and an alerts table that flags urgent language, confidential framing, and stocks mentioned repeatedly with no exit signal ever given.",
+      "Feeds into a companion rules engine that applies staged sell logic -- stop-loss, milestone profit-taking, all-time-high proximity, and a \"patience expired\" timer keyed to source activity rather than just holding period -- plus index dip-accumulation logic across major indices.",
+      "Runs as an automated daily pipeline.",
+    ],
+    status: "active",
+    tags: ["ai", "finance", "automation"],
+  },
+  {
+    name: "Personal Productivity OS",
+    tagline:
+      "An in-progress system extending the same signal-extraction approach from investment chat to daily life -- parsing WhatsApp, calendar, email, and health data into a daily digest of todos and reflections.",
+    description:
+      "Extends the WhatsApp signal-extraction approach beyond investing -- synthesizing messages, calendar, email, and fitness data into a short daily list of todos and a reflection prompt.",
+    mechanism: [
+      "Builds on the WhatsApp parsing methodology from the signal-extraction project, applying the same \"unstructured input -> structured, trackable output\" pattern to daily life instead of markets.",
+      "Layers on an existing Notion-based data store -- daily activity, sleep, and HRV logging, plus task tracking -- as the source of truth for the digest.",
+      "Goal: one automated daily digest instead of five separate apps to check each morning.",
+    ],
+    status: "idea",
+    tags: ["notion-api", "ai", "automation"],
+  },
 ];
